@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script>
+	    function getMaxSubSum(arr) {
+	    	var sum = 0;
+	    	var subSum = [];
+	    	for (var i = 0; i < arr.length; i++) {
+	    		subSum[i] = 0; var curSum = 0;
+	    		for (var j = i; j < arr.length; j++) {
+	    			curSum += arr[j];
+	    			if (curSum > subSum[i]) {
+	    				subSum[i] = curSum;
+	    			}
+	    			sum = Math.max(sum, subSum[i]);	
+	    		};
+	    	};
+	    	return sum;
+	    }
+	    console.log(getMaxSubSum([-1, 2, 4,-5, 2]));
+	    console.log(getMaxSubSum([-1, 2, 3, -9])); //= 5 
+		console.log(getMaxSubSum([2, -1, 2, 3, -9])); //= 6
+		console.log(getMaxSubSum([-1, 2, 3, -9, 11])); //= 11
+		console.log(getMaxSubSum([-2, -1, 1, 2])); //= 3
+		console.log(getMaxSubSum([100, -9, 2, -3, 5])); //= 100
+		console.log(getMaxSubSum([-1, -2, -3])); //= 0
+
+		function getMaxSubSum2(arr) {
+			var sum = 0;
+			var curSum = 0;
+			for (var i = 0; i < arr.length; i++) {
+				curSum += arr[i];
+				if(curSum > 0){
+					sum = Math.max(sum, curSum);
+				} else {
+					curSum = 0;
+					continue;
+				}
+			};
+			return sum;
+		}	
+	    console.log(getMaxSubSum2([-1, 2, 4,-5, 2]));
+	    console.log(getMaxSubSum2([-1, 2, 3, -9])); //= 5 
+		console.log(getMaxSubSum2([2, -1, 2, 3, -9])); //= 6
+		console.log(getMaxSubSum2([-1, 2, 3, -9, 11])); //= 11
+		console.log(getMaxSubSum2([-2, -1, 1, 2])); //= 3
+		console.log(getMaxSubSum2([100, -9, 2, -3, 5])); //= 100
+		console.log(getMaxSubSum2([-1, -2, -3])); //= 0
+		
+	</script>
+</body>
+</html>
